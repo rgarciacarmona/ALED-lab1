@@ -31,7 +31,7 @@ jobs:
       - name: Compile LaTeX to PDF
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: main.tex
+          root_file: ALED-lab1.tex
           working_directory: docs/
       
       - name: Remove LaTeX auxiliary files
