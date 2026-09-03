@@ -13,20 +13,31 @@ jobs:
         with:
           fetch-depth: 0
       
+      - name: Clean docs folder
+        run: |
+          mkdir -p docs
+          # Remove all files from docs except .gitkeep
+          find docs -type f -delete
+          find docs -type d -empty -delete
+      
       - name: Sync Overleaf files to docs
         run: |
           git remote add overleaf https://git:${{ secrets.OVERLEAF_GIT_TOKEN }}@git.overleaf.com/${{ secrets.OVERLEAF_PROJECT_ID }}.git || true
           git fetch overleaf main
           
           mkdir -p docs
-          # Extract entire overleaf project into docs folder
           git archive overleaf/main | tar -x -C docs/
-
+      
       - name: Compile LaTeX to PDF
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: ALED-Practica1.tex
+          root_file: main.tex
           working_directory: docs/
+      
+      - name: Remove LaTeX auxiliary files
+        run: |
+          cd docs/
+          rm -f *.aux *.log *.out *.toc *.fls *.fdb_latexmk *.synctex.gz *.bbl *.blg
       
       - name: Commit and push if changed
         run: |
