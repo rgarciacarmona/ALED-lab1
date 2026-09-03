@@ -16,11 +16,11 @@ jobs:
       - name: Sync Overleaf files to docs
         run: |
           git remote add overleaf https://git:${{ secrets.OVERLEAF_GIT_TOKEN }}@git.overleaf.com/${{ secrets.OVERLEAF_PROJECT_ID }}.git || true
-          git fetch overleaf master
+          git fetch overleaf main
           
           mkdir -p docs
           # Extract entire overleaf project into docs folder
-          git archive overleaf/master | tar -x -C docs/
+          git archive overleaf/main | tar -x -C docs/
       
       - name: Commit and push if changed
         run: |
