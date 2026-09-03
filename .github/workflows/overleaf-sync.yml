@@ -25,7 +25,7 @@ jobs:
       - name: Compile LaTeX to PDF
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: ALED-Practica 1.tex
+          root_file: ALED-Practica1.tex
           working_directory: docs/
       
       - name: Commit and push if changed
