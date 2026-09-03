@@ -21,6 +21,12 @@ jobs:
           mkdir -p docs
           # Extract entire overleaf project into docs folder
           git archive overleaf/main | tar -x -C docs/
+
+      - name: Compile LaTeX to PDF
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: ALED-Practica 1.tex
+          working_directory: docs/
       
       - name: Commit and push if changed
         run: |
@@ -29,6 +35,6 @@ jobs:
           git add docs/
           
           if ! git diff --cached --quiet; then
-            git commit -m "Sync Overleaf project to docs folder"
+            git commit -m "Sync Overleaf project and compile PDF"
             git push
           fi
