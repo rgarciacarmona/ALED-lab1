@@ -1,0 +1,34 @@
+name: Sync Overleaf to docs folder
+
+on:
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Sync Overleaf files to docs
+        run: |
+          git remote add overleaf https://git:${{ secrets.OVERLEAF_GIT_TOKEN }}@git.overleaf.com/${{ secrets.OVERLEAF_PROJECT_ID }}.git || true
+          git fetch overleaf master
+          
+          mkdir -p docs
+          # Extract entire overleaf project into docs folder
+          git archive overleaf/master | tar -x -C docs/
+      
+      - name: Commit and push if changed
+        run: |
+          git config user.email "github-actions@github.com"
+          git config user.name "GitHub Actions"
+          git add docs/
+          
+          if ! git diff --cached --quiet; then
+            git commit -m "Sync Overleaf project to docs folder"
+            git push
+          fi
