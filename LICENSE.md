@@ -1,7 +1,8 @@
 # Licencia del código
 
 Se aplica al código fuente (`src/`). Los enunciados se rigen por
-[`LICENSE-DOCS.md`](LICENSE-DOCS.md).
+[`LICENSE-DOCS.md`](LICENSE-DOCS.md). Las grabaciones (`recordings/`)
+no están cubiertas por ninguna de las dos.
 
 MIT License
 

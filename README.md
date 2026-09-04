@@ -28,3 +28,7 @@ El código fuente (`src/`) se distribuye bajo licencia MIT. Consulta
 
 Los enunciados (`docs/`) se distribuyen bajo licencia CC BY-NC-SA 4.0.
 Consulta [`LICENSE-DOCS.md`](LICENSE-DOCS.md).
+
+Las grabaciones (`recordings/`) son datos biométricos capturados de un
+sujeto que dio su consentimiento. No están cubiertas por ninguna de
+las dos licencias: consulta con los autores antes de reutilizarlas.
