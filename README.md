@@ -1,4 +1,4 @@
-# AED - Práctica 1: Visualización de señales EEG
+# ALED - Práctica 1: Visualización de señales EEG
 
 Código base para la práctica 1 de Algoritmos y Estructuras de Datos
 (Grado en Ingeniería Biomédica, UPM).
